@@ -1,0 +1,103 @@
+//
+// Component: Modal
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@modal-background:                              rgba(34, 34, 34, 0.6);
+
+@modal-dialog-width:                            800px;
+
+@modal-body-padding-horizontal:                 20px;
+@modal-body-padding-vertical:                   30px;
+
+@modal-header-padding-horizontal:               20px;
+@modal-header-padding-vertical:                 15px;
+@modal-header-background:                       @tm-primary-alt;
+
+@modal-footer-padding-horizontal:               20px;
+@modal-footer-padding-vertical:                 (@modal-footer-padding-horizontal / 2);
+@modal-footer-background:                       @tm-muted;
+
+@modal-title-font-size:                         @global-xlarge-font-size;
+@modal-title-line-height:                       1.42;
+
+@modal-close-position:                          20px;
+@modal-close-padding:                           5px;
+
+//
+// New
+//
+
+@modal-close-full-padding:                     @global-margin;
+@modal-close-full-background:                  @modal-dialog-background;
+
+
+// Component
+// ========================================================================
+
+.hook-modal() {}
+
+
+// Dialog
+// ========================================================================
+
+.hook-modal-dialog() {}
+
+
+// Full
+// ========================================================================
+
+.hook-modal-full() {}
+
+
+// Sections
+// ========================================================================
+
+.hook-modal-header() {}
+
+.hook-modal-body() {}
+
+.hook-modal-footer() {}
+
+
+// Title
+// ========================================================================
+
+.hook-modal-title() {
+	text-align: left;
+}
+
+
+// Close
+// ========================================================================
+
+.hook-modal-close() {}
+
+.hook-modal-close-hover() {}
+
+.hook-modal-close-default() {}
+
+.hook-modal-close-default-hover() {}
+
+.hook-modal-close-outside() {}
+
+.hook-modal-close-outside-hover() {}
+
+.hook-modal-close-full() {
+    top: 0;
+    right: 0;
+    padding: @modal-close-full-padding;
+    background: @modal-close-full-background;
+}
+
+.hook-modal-close-full-hover() {}
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-modal-misc() {}

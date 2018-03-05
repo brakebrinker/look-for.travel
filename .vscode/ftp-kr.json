@@ -1,0 +1,16 @@
+{
+    "host": "5.45.124.77",
+    "username": "look_develop",
+    "password": "5rp2er5R",
+    "remotePath": "/",
+    "protocol": "ftp",
+    "port": 0,
+    "fileNameEncoding": "utf8",
+    "autoUpload": true,
+    "autoDelete": false,
+    "autoDownload": false,
+    "ignore": [
+        ".git",
+        "/.vscode/"
+    ]
+}
