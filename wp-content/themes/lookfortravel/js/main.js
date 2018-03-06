@@ -147,6 +147,36 @@ jQuery(function($){
 		});
 	});
 
+	// поиск по названию самолета 
+	$('#planes-filter #plane-name').on('input keyup', _.debounce(function (){
+		var searchText = $(this).val();
+		
+		if (searchText.length > 2) {
+			var searchQuery = {
+				'action': 'plane-search',
+				'search': searchText,
+				'query' : true_posts
+			};
+
+			$('#plane-name-results').removeAttr("hidden").html('<li><span>Загрузка...</span></li>');
+
+			$.ajax({
+				url:lookfortravel.ajaxurl, // обработчик
+				data:searchQuery, // данные
+				type:'GET', // тип запроса
+				success:function(data){
+					if (data) { 
+						$('#plane-name-results').html(data); // вставляем новые посты
+					} else {
+						$('#plane-name-results').html('<li><span>Ошибка загрузки.</span></li>');
+					}
+				}
+			});
+		} else {
+			$('#plane-name-results').prop("hidden", true).html('');
+		}
+	}, 500));
+
 	// фильтр самолетов
 	$('#planes-filter').on('change', 'select', function(){
 		//var url = document.location.href;

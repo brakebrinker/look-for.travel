@@ -279,7 +279,7 @@ add_action('wp_ajax_posts-sort', 'sort_posts');
 add_action('wp_ajax_nopriv_posts-sort', 'sort_posts');
 
 // фильтрация самолетов
-function filter_planes(){
+function filter_planes() {
     global $wp_query;
 
     $sortkey = '';
@@ -359,6 +359,44 @@ function filter_planes(){
  
 add_action('wp_ajax_plane-filter', 'filter_planes');
 add_action('wp_ajax_nopriv_plane-filter', 'filter_planes');
+
+// поиск по названию самолета
+function search_planes() {
+    global $wp_query;
+
+    if (!empty($_GET['search'])) {
+        $s_search = trim(stripslashes( $_GET['search'] ));
+
+        if (!empty($_GET['search'])) {
+
+            $args = array(
+                'post_type' => 'plane',
+                'posts_per_page' => 10,
+                'post_status' => 'publish',
+                's' => $s_search
+            );
+        }
+        
+        query_posts($args);
+
+        if( have_posts() ) :
+
+            while( have_posts() ): the_post();
+    
+                echo '<li><a href="' . get_permalink() . '" target="_blank">' . get_the_title() . '</a></li>';
+    
+            endwhile;
+    
+        endif;
+
+        wp_reset_query();
+    }
+    wp_die();
+}
+
+add_action('wp_ajax_plane-search', 'search_planes');
+add_action('wp_ajax_nopriv_plane-search', 'search_planes');
+
 
 // получение типа фюзеляжа самолета
 function get_type_fuselage($field) {

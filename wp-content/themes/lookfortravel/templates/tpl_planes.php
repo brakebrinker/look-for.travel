@@ -49,8 +49,8 @@ Template Name: Шаблон рейтинга самолетов
 		<form id="planes-filter">
 			<div class="section-filters uk-clearfix uk-flex uk-flex-center">
 				<div class="uk-inline uk-visible@l">
-					<input type="text" class="uk-input uk-form-width-small" placeholder="Название">
-					<ul class="form-results uk-list" hidden>
+					<input id="plane-name" name="plane-name" type="text" class="uk-input uk-form-width-small" placeholder="Название">
+					<ul id="plane-name-results" class="form-results uk-list" hidden>
 						<li><a href="">Таиланд</a></li>
 						<li><a href="">Аюттхая — самый крупный город мира в XVIII столетии</a></li>
 						<li><a href="">Таиланд</a></li>
