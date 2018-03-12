@@ -183,6 +183,7 @@ jQuery(function($){
 		//var prmName = 'sort';
 		var val;
 		var typeFilter;
+		var sorting = $("#planes-filter .plane-sorting").val();
 		var queryParams = {};
 
 		$("#planes-filter select.uk-form-width-small").each(function() {
@@ -193,7 +194,10 @@ jQuery(function($){
 			}
 		});
 		queryParams['action'] = 'plane-filter';
+		queryParams['sort'] = sorting;
 		queryParams['query'] = true_posts;
+
+		console.log(sorting);
 		//var res = '';
 	
 		//$(this).text('Загрузка...'); // изменяем текст кнопки, вы также можете добавить прелоадер

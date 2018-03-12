@@ -278,19 +278,20 @@ function sort_posts(){
 add_action('wp_ajax_posts-sort', 'sort_posts');
 add_action('wp_ajax_nopriv_posts-sort', 'sort_posts');
 
-// фильтрация самолетов
+// фильтрация самолетов с сортировкой
 function filter_planes() {
     global $wp_query;
 
-    $sortkey = '';
-    $sortvalue = '';
-    $order = 'DESC';
-    $taxonomy = '';
-    $termin = '';
-
-    $argSort = array();
-
     if (!empty($_GET)) {
+
+        $sortkey = '';
+        $sortvalue = '';
+        $order = 'DESC';
+        $taxonomy = '';
+        $termin = '';
+
+        $argSort = array();
+
         $getted_query= unserialize(stripslashes($_GET['query']));
 
         $meta_q = array(
@@ -325,6 +326,17 @@ function filter_planes() {
                 'key' => 'plane_feature',
                 'value' => $_GET['feature']
             ));
+        }
+
+        // сортировка
+
+        if (!empty($_GET['sort']) && $_GET['sort'] === 's_rate') {
+            $getted_query['orderby'] = 'meta_value_num';
+            $getted_query['meta_key'] = 'position_rating';
+        }
+
+        if (!empty($_GET['sort']) && $_GET['sort'] === 's_alfabet') {
+            $getted_query['orderby'] = 'title';
         }
 
         query_posts(array_merge($getted_query, $meta_q));

@@ -6,11 +6,45 @@ Template Name: Шаблон рейтинга авиакомпаний
 <?php get_header(); ?>
 <?php while ( have_posts() ) : the_post(); ?>
 <?php 
-    $image = get_field('rating_img'); 
+	$image = get_field('rating_img'); 
+	
+	$a_args = array(
+		'post_type'   => 'airline',
+	); 
+
+	$airline_items = get_posts($a_args);
+
+	$a_character = array();
+	$a_type_of_fly = array();
+	$a_aliance = array();
+
+	foreach ($airline_items as $airline) {
+		$dimensions = get_field('airline_character', $airline->ID);
+		$range_flight = get_field('plane_range_flight', $plane->ID);
+		$manufacturer = get_field('plane_manufacturer', $plane->ID);
+		$feature = get_field('plane_feature', $plane->ID);
+
+		if (array_search($dimensions, $p_habarite) === false) {
+			array_push($p_habarite, $dimensions);
+		}
+
+		if (array_search($range_flight, $p_range_flight) === false) {
+			array_push($p_range_flight, $range_flight);
+		}
+		
+		if (array_search($manufacturer, $p_manufacturer) === false) {
+			array_push($p_manufacturer, $manufacturer);
+		}
+		
+		if (array_search($feature, $p_feature) === false) {
+			array_push($p_feature, $feature);
+		}
+	}
+	wp_reset_postdata();
 ?>
 <main class="section-main">
 	<div class="uk-container uk-margin-small-top uk-margin-large-bottom">
-		<form>
+		<form id="iarlines-filter">
 			<div class="section-filters uk-clearfix uk-flex uk-flex-center">
 				<div class="uk-inline uk-visible@l">
 					<input type="text" class="uk-input uk-form-width-small" placeholder="Название или код">

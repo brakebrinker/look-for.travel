@@ -75,12 +75,12 @@ Template Name: Шаблон рейтинга самолетов
 				<div class="uk-text-center uk-hidden@l">
 					<button class="uk-button uk-button-small" uk-toggle="target: .mobile-filters; animation: uk-animation-fade">Фильтр</button>
 				</div>
-				<select class="uk-float-right uk-select uk-form-width-medium uk-visible@l">
-					<option>Сортировка: по рейтингу</option>
-					<option>Сортировка: по алфавиту</option>
+				<select name="sort" class="plane-sorting uk-float-right uk-select uk-form-width-medium uk-visible@l">
+					<option value="s_rate">Сортировка: по рейтингу</option>
+					<option value="s_alfabet">Сортировка: по алфавиту</option>
 				</select>
 				<div class="uk-hidden@l" uk-form-custom>
-		            <select>
+		            <select class="mobile-plane-sorting">
 						<option>Сортировка: по рейтингу</option>
 						<option>Сортировка: по алфавиту</option>
 		            </select>
